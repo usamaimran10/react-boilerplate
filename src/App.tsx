@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@mui/material";
-import "./App.css";
-import theme from "./theme/theme";
-import Home from "./pages/Home/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "./App.css";
+import LoginPage from "./pages/Login/Login";
+import theme from "./theme/theme";
 
 const queryClient = new QueryClient();
 
@@ -12,7 +12,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <Home />
+          <LoginPage />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>

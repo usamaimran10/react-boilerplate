@@ -1,23 +1,8 @@
-import { TOKEN_KEY } from "@/utils/constants";
 import axios, { AxiosResponse, AxiosError } from "axios";
 
-const BASE_URL =
-  import.meta.env.VITE_ENVIRONMENT === "production"
-    ? import.meta.env.VITE_API_BASE_URL_PRODUCTION ?? ""
-    : import.meta.env.VITE_API_BASE_URL_DEVELOPMENT ?? "";
-
-const token = localStorage.getItem(TOKEN_KEY);
-
 const client = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    ...(token && { Authorization: `Bearer ${token}` }),
-  },
+  baseURL: "https://icanhazdadjoke.com",
 });
-
-export function setAuthHeader(token: string) {
-  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
 
 const onSuccess = (response: AxiosResponse) => {
   console.debug("✅ Request Successful:", response);
@@ -33,10 +18,10 @@ const onError = async (error: AxiosError) => {
     console.error("Data:", data);
     console.error("Headers:", headers);
 
-    if (status === 401) {
-      localStorage.removeItem(TOKEN_KEY);
-      window.location.reload();
-    }
+    // if (status === 401) {
+    //   localStorage.removeItem(TOKEN_KEY);
+    //   window.location.reload();
+    // }
   } else {
     console.error("Error Message:", error.message);
   }

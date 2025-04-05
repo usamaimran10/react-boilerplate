@@ -48,9 +48,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Grid container style={{ height: "100vh" }}>
+    <Grid container style={{ height: "100vh" }} alignItems={"center"}>
       {/* Left Panel */}
-      <Grid item xl={7} lg={7} xs={12}>
+      <Grid size={{ xl: 7, lg: 6, xs: 12 }}>
         <Box maxWidth={400} mx="auto">
           {/* Logo */}
           <Typography variant="h4" fontWeight="bold" sx={{ mb: 4 }}>
@@ -150,27 +150,19 @@ const LoginPage: React.FC = () => {
       </Grid>
 
       {/* Right Panel */}
-      <Grid item xl={5} lg={5} sx={{ display: { xs: "none", lg: "block" } }}>
-        <Box
-          sx={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <img
-            src={sideLogo}
-            alt="N/A"
-            style={{ width: "100%", height: "100%" }}
-          />
-          <Box
-            sx={{
-              position: "absolute",
-              left: { xl: "13vw", lg: "8vw" },
-              top: { xl: "6vh", lg: "3vh" },
-            }}
-          ></Box>
-        </Box>
+      <Grid
+        size={{ xl: 7, lg: 6 }}
+        sx={{
+          height: "100vh",
+          overflow: "hidden",
+          display: { xs: "none", lg: "block" },
+        }}
+      >
+        <img
+          src={sideLogo}
+          alt="N/A"
+          style={{ width: "100%", objectFit: "cover" }}
+        />
       </Grid>
     </Grid>
   );
